@@ -1,0 +1,33 @@
+artifact_path: /Users/ram/Desktop/Code/MLOps_labs/lab04/mlruns/1/models/m-68bd23a1aef34a208f54c41b8936a9ee/artifacts
+flavors:
+  python_function:
+    env:
+      conda: conda.yaml
+      virtualenv: python_env.yaml
+    loader_module: mlflow.sklearn
+    model_path: model.pkl
+    predict_fn: predict
+    python_version: 3.13.7
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.8.0
+    skops_trusted_types: null
+is_signature_from_type_hint: false
+mlflow_version: 3.10.1
+model_id: m-68bd23a1aef34a208f54c41b8936a9ee
+model_size_bytes: 914
+model_uuid: m-68bd23a1aef34a208f54c41b8936a9ee
+prompts: null
+run_id: 563a3856d81343c09ba0a9f624182656
+signature:
+  inputs: '[{"type": "long", "name": "Pclass", "required": true}, {"type": "long",
+    "name": "Sex", "required": true}, {"type": "double", "name": "Age", "required":
+    true}, {"type": "double", "name": "Fare", "required": true}, {"type": "boolean",
+    "name": "Embarked_C", "required": true}, {"type": "boolean", "name": "Embarked_Q",
+    "required": true}, {"type": "boolean", "name": "Embarked_S", "required": true}]'
+  outputs: '[{"type": "tensor", "tensor-spec": {"dtype": "int64", "shape": [-1]}}]'
+  params: null
+type_hint_from_example: false
+utc_time_created: '2026-03-11 09:51:10.559239'

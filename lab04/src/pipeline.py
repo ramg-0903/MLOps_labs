@@ -1,17 +1,39 @@
-from src.train_v1 import train_v1
-from src.train_v2 import train_v2
-from src.register import register_model
-from src.batch_predict import batch_predict
-from src.preprocess import preprocess
+from preprocess import preprocess
+from train_v1 import train_baseline
+from train_v2 import train_tuned
+from register import register_model
 
-def main():
 
-    preprocess()
-    train_v1()
-    train_v2()  
-    register_model("titanic_v1", "titanic_model_v1")
-    register_model("titanic_v2", "titanic_model_v2")
-    batch_predict() 
+MODEL_NAME = "titanic_survival_model"
+
+
+def run_pipeline():
+
+    print("Starting pipeline")
+
+    print("Running preprocessing")
+    X_train, X_test, y_train, y_test = preprocess()
+
+    print("Training baseline model (v1)")
+    train_baseline(X_train, y_train, X_test, y_test)
+
+    print("Registering baseline model")
+    register_model(
+        run_name="logit_v1_baseline",
+        model_name=MODEL_NAME
+    )
+
+    print("Training tuned model (v2)")
+    train_tuned(X_train, y_train, X_test, y_test)
+
+    print("Registering tuned model")
+    register_model(
+        run_name="logit_v2_tuned",
+        model_name=MODEL_NAME
+    )
+
+    print("Pipeline completed!")
+
 
 if __name__ == "__main__":
-    main()
+    run_pipeline()
